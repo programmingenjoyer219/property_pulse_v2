@@ -2,6 +2,7 @@
 	import "../app.css";
 	import "remixicon/fonts/remixicon.css";
 	import Navbar from "$components/Navbar.svelte";
+	import Footer from "$components/Footer.svelte";
 
 	let loggedIn = true;
 </script>
@@ -21,5 +22,5 @@
 <main class="min-h-dvh">
 	<Navbar {loggedIn} />
 	<slot />
-	<!-- <Footer /> -->
+	<Footer />
 </main>
