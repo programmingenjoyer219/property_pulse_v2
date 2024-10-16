@@ -42,14 +42,13 @@
 
 				<!-- links -->
 				<ul
-					class="absolute top-[3rem] menu menu-sm dropdown-content bg-white rounded-md z-[1] w-52 p-2 shadow-md flex flex-col gap-2"
+					class="absolute top-[3rem] menu menu-sm dropdown-content bg-blue-700 border-2 border-white rounded-md z-[1] w-52 p-1 shadow-md flex flex-col gap-1"
 				>
 					<!-- home -->
 					<li>
 						<a
 							href="/"
-							class="{$page.route.id?.includes('/') &&
-								'bg-blue-200'} nav-link-secondary"
+							class="{$page.route.id?.includes('/') && 'bg-blue-800'} nav-link"
 						>
 							<i class="ri-home-7-fill text-xl"></i>
 							<span>Home</span>
@@ -60,7 +59,7 @@
 						<a
 							href="/properties"
 							class="{$page.route.id?.includes('/properties') &&
-								'bg-blue-200'} nav-link-secondary"
+								'bg-blue-200'} nav-link"
 						>
 							<i class="ri-building-fill text-xl"></i>
 							<span>Properties</span>
@@ -89,7 +88,7 @@
 
 				<!-- links -->
 				<ul
-					class="absolute top-[3rem] menu menu-sm dropdown-content bg-white rounded-md z-[1] w-52 p-2 shadow-md flex flex-col gap-2"
+					class="absolute top-[3rem] menu menu-sm dropdown-content bg-blue-700 border-2 border-white rounded-md z-[1] w-52 p-1 shadow-md flex flex-col gap-1"
 				>
 					{#if loggedIn}
 						<li>
@@ -97,7 +96,7 @@
 							<a
 								href="/profile"
 								class="{$page.route.id?.includes('/profile') &&
-									'bg-blue-200'} nav-link-secondary"
+									'bg-blue-800'} nav-link"
 							>
 								<i class="ri-user-3-fill text-xl"></i>
 								<span>Profile</span>
@@ -108,7 +107,7 @@
 							<a
 								href="/messages"
 								class="{$page.route.id?.includes('/messages') &&
-									'bg-blue-200'} nav-link-secondary"
+									'bg-blue-800'} nav-link"
 							>
 								<i class="ri-message-2-fill text-xl"></i>
 								<span>Messages</span>
@@ -119,7 +118,7 @@
 							<a
 								href="/add"
 								class="{$page.route.id?.includes('/add') &&
-									'bg-blue-200'} nav-link-secondary"
+									'bg-blue-800'} nav-link"
 							>
 								<i class="ri-add-fill text-xl"></i>
 								<span>Add Property</span>
@@ -130,7 +129,7 @@
 							<a
 								href="/signout"
 								class="{$page.route.id?.includes('/signout') &&
-									'bg-blue-200'} nav-link-secondary"
+									'bg-blue-800'} nav-link"
 							>
 								<i class="ri-logout-box-fill text-xl"></i>
 								<span>Sign Out</span>
@@ -142,7 +141,7 @@
 							<a
 								href="/login"
 								class="{$page.route.id?.includes('/login') &&
-									'bg-blue-200'} nav-link-secondary"
+									'bg-blue-800'} nav-link"
 							>
 								<i class="ri-google-fill text-xl"></i>
 								<span>Login</span>
