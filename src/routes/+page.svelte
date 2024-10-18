@@ -1,8 +1,13 @@
-<script>
+<script lang="ts">
+	import type { PageData } from "./$types";
 	import Hero from "$components/Hero.svelte";
 	import InfoCard from "$components/InfoCard.svelte";
+	import Properties from "$components/Properties.svelte";
+
+	export let data: PageData;
 
 	let loggedIn = false;
+	$: properties = data.properties;
 </script>
 
 <svelte:head>
@@ -19,7 +24,7 @@
 
 <Hero />
 
-<section class="section bg-blue-50">
+<section class="px-4 pt-[4rem] bg-gray-50">
 	<div class="container-mod">
 		<div class="grid grid-rows-2 gap-6 md:gap-10 md:grid-rows-1 md:grid-cols-2">
 			<!-- for renters -->
@@ -28,7 +33,7 @@
 				title={"For Renters"}
 				content={"Find your dream rental property. Bookmark properties and contact owners."}
 			>
-				<a href="/properties" class="button-primary">Browse Properties</a>
+				<a href="#properties" class="button-primary">Browse Properties</a>
 			</InfoCard>
 			<!-- for property owners -->
 			<InfoCard
@@ -48,3 +53,5 @@
 		</div>
 	</div>
 </section>
+
+<Properties {properties} />
