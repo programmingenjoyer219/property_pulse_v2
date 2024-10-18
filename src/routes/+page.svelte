@@ -3,11 +3,21 @@
 	import Hero from "$components/Hero.svelte";
 	import InfoCard from "$components/InfoCard.svelte";
 	import Properties from "$components/Properties.svelte";
+	import { propertiesStore } from "$lib/stores/properties";
 
 	export let data: PageData;
 
 	let loggedIn = false;
-	$: properties = [
+
+	$propertiesStore = [
+		...data.properties,
+		...data.properties,
+		...data.properties,
+		...data.properties,
+		...data.properties,
+		...data.properties,
+		...data.properties,
+		...data.properties,
 		...data.properties,
 		...data.properties,
 		...data.properties,
@@ -59,4 +69,4 @@
 	</div>
 </section>
 
-<Properties {properties} />
+<Properties />

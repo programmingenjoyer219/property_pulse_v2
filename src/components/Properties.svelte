@@ -1,20 +1,31 @@
 <script lang="ts">
 	import PropertyCard from "$components/PropertyCard.svelte";
+	import {
+		propertiesStore,
+		propertiesToDisplay,
+		showMoreProperties,
+	} from "$lib/stores/properties";
 
-	export let properties: Property[] = [];
+	$: properties = $propertiesToDisplay as Property[];
+	$: displayShowMoreButton =
+		$propertiesToDisplay.length < $propertiesStore.length;
 </script>
 
 <section id="properties" class="section bg-gray-50">
 	<div class="container mx-auto space-y-8">
 		<div class="properties-grid">
-			{#each properties as property (property.id)}
+			{#each properties as property, index (index)}
 				<PropertyCard {property} />
 			{/each}
 		</div>
 
-		<!-- <div class="flex items-center justify-center">
-			<a href="/properties" class="button-primary"> Show More </a>
-		</div> -->
+		{#if displayShowMoreButton}
+			<div class="flex items-center justify-center">
+				<button on:click={showMoreProperties} class="button-primary">
+					Show More
+				</button>
+			</div>
+		{/if}
 	</div>
 </section>
 
