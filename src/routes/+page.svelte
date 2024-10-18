@@ -7,7 +7,12 @@
 	export let data: PageData;
 
 	let loggedIn = false;
-	$: properties = data.properties;
+	$: properties = [
+		...data.properties,
+		...data.properties,
+		...data.properties,
+		...data.properties,
+	];
 </script>
 
 <svelte:head>
