@@ -3,8 +3,9 @@
 	import "remixicon/fonts/remixicon.css";
 	import Navbar from "$components/Navbar.svelte";
 	import Footer from "$components/Footer.svelte";
+	import type { LayoutData } from "./$types";
 
-	let loggedIn = true;
+	export let data: LayoutData;
 </script>
 
 <svelte:head>
@@ -20,7 +21,7 @@
 </svelte:head>
 
 <main class="min-h-dvh">
-	<Navbar {loggedIn} />
+	<Navbar session={data.session} />
 	<slot />
 	<Footer />
 </main>

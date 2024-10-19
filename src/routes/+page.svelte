@@ -4,10 +4,11 @@
 	import InfoCard from "$components/InfoCard.svelte";
 	import Properties from "$components/Properties.svelte";
 	import { propertiesStore } from "$lib/stores/properties";
+	import { SignIn } from "@auth/sveltekit/components";
 
 	export let data: PageData;
 
-	let loggedIn = false;
+	$: loggedIn = !!data.session;
 
 	$propertiesStore = [
 		...data.properties,
@@ -59,10 +60,12 @@
 				{#if loggedIn}
 					<a href="/add" class="button-primary">Add Property</a>
 				{:else}
-					<a href="/add" class="button-primary space-x-1">
-						<i class="ri-google-fill"></i>
-						<span>Login To Add Properties</span>
-					</a>
+					<SignIn>
+						<svelte:fragment slot="submitButton">
+							<i class="ri-google-fill text-xl"></i>
+							<span>Login To Add Properties</span>
+						</svelte:fragment>
+					</SignIn>
 				{/if}
 			</InfoCard>
 		</div>

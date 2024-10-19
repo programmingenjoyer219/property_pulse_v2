@@ -1,18 +1,20 @@
-<script>
+<script lang="ts">
+	import { SignIn, SignOut } from "@auth/sveltekit/components";
 	import { page } from "$app/stores";
 
-	export let loggedIn = false;
+	export let session;
+	$: loggedIn = !!session;
 </script>
 
-<header class="flex items-center justify-between p-4 bg-blue-700">
+<header id="navbar" class="flex items-center justify-between p-4 bg-blue-700">
 	<!-- logo -->
 	<a href="/" class="text-gray-50 text-xl sm:text-2xl flex items-center gap-2">
 		<i class="ri-home-7-fill"></i>
 		<p class="font-semibold">PropertyPulse</p>
 	</a>
 
+	<!-- user profile -->
 	<div class="flex items-center gap-2 sm:gap-4">
-		<!-- user profile -->
 		<div class="dropdown dropdown-end relative">
 			<div tabindex="0" role="button" class="btn btn-ghost btn-circle avatar">
 				<!-- image container -->
@@ -20,10 +22,7 @@
 					class="w-10 rounded-full border-2 border-blue-400 hover:border-blue-100 transition-colors duration-200 bg-blue-700 hover:bg-blue-800 text-white grid place-content-center"
 				>
 					{#if loggedIn}
-						<img
-							alt="Tailwind CSS Navbar component"
-							src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"
-						/>
+						<img alt="" src={session?.user?.image} />
 					{:else}
 						<i class="ri-user-fill text-xl"></i>
 					{/if}
@@ -34,8 +33,8 @@
 					class="absolute top-[3rem] menu menu-sm dropdown-content bg-blue-700 border-2 border-white rounded-md z-[1] w-52 p-1 shadow-md flex flex-col gap-1"
 				>
 					{#if loggedIn}
+						<!-- profile -->
 						<li>
-							<!-- profile -->
 							<a
 								href="/profile"
 								class="{$page.route.id?.includes('/profile') &&
@@ -69,26 +68,22 @@
 						</li>
 						<!-- logout -->
 						<li>
-							<a
-								href="/signout"
-								class="{$page.route.id?.includes('/signout') &&
-									'bg-blue-800'} nav-link"
-							>
-								<i class="ri-logout-box-fill text-xl"></i>
-								<span>Sign Out</span>
-							</a>
+							<SignOut>
+								<svelte:fragment slot="submitButton">
+									<i class="ri-logout-box-fill text-xl"></i>
+									<span>Sign Out</span>
+								</svelte:fragment>
+							</SignOut>
 						</li>
 					{:else}
 						<!-- login -->
 						<li>
-							<a
-								href="/login"
-								class="{$page.route.id?.includes('/login') &&
-									'bg-blue-800'} nav-link"
-							>
-								<i class="ri-google-fill text-xl"></i>
-								<span>Login</span>
-							</a>
+							<SignIn>
+								<svelte:fragment slot="submitButton">
+									<i class="ri-google-fill text-xl"></i>
+									<span>Login</span>
+								</svelte:fragment>
+							</SignIn>
 						</li>
 					{/if}
 				</ul>
