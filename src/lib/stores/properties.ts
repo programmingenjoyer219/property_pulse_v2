@@ -2,18 +2,23 @@ import { writable, get, derived } from "svelte/store";
 
 export const propertiesStore = writable<Property[]>([]);
 
-export const propertiesPerSet = writable(40);
+export const numberOfPropertiesToDisplay = writable(40);
 
 export const propertiesToDisplay = derived(
-	[propertiesStore, propertiesPerSet],
-	([$propertiesStore, $propertiesPerSet]) =>
-		$propertiesStore.slice(0, $propertiesPerSet)
+	[propertiesStore, numberOfPropertiesToDisplay],
+	([$propertiesStore, $numberOfPropertiesToDisplay]) =>
+		$propertiesStore.slice(0, $numberOfPropertiesToDisplay)
+);
+
+export const canShowMoreProperties = derived(
+	[propertiesStore, propertiesToDisplay],
+	([$propertiesStore, $propertiesToDisplay]) =>
+		$propertiesToDisplay.length < $propertiesStore.length,
+	true
 );
 
 export function showMoreProperties() {
-	const propertyCount = get(propertiesStore).length;
-	const displayedPropertyCount = get(propertiesToDisplay).length;
-	if (displayedPropertyCount < propertyCount) {
-		propertiesPerSet.update((i) => i + 40);
+	if (get(canShowMoreProperties)) {
+		numberOfPropertiesToDisplay.update((i) => i + 40);
 	}
 }

@@ -1,14 +1,12 @@
 <script lang="ts">
 	import PropertyCard from "$components/PropertyCard.svelte";
 	import {
-		propertiesStore,
 		propertiesToDisplay,
 		showMoreProperties,
+		canShowMoreProperties,
 	} from "$lib/stores/properties";
 
 	$: properties = $propertiesToDisplay as Property[];
-	$: displayShowMoreButton =
-		$propertiesToDisplay.length < $propertiesStore.length;
 </script>
 
 <section id="properties" class="section bg-gray-50">
@@ -19,7 +17,7 @@
 			{/each}
 		</div>
 
-		{#if displayShowMoreButton}
+		{#if $canShowMoreProperties}
 			<div class="flex items-center justify-center">
 				<button on:click={showMoreProperties} class="button-primary">
 					Show More
