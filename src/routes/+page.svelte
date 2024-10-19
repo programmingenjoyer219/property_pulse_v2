@@ -42,19 +42,19 @@
 
 <section class="px-4 pt-[4rem] bg-gray-50">
 	<div class="container-mod">
-		<div class="grid grid-rows-2 gap-6 md:gap-10 md:grid-rows-1 md:grid-cols-2">
+		<div class="info-card-grid">
 			<!-- for renters -->
 			<InfoCard
 				imageLink="/assets/for_renters.svg"
 				title={"For Renters"}
 				content={"Find your dream rental property. Bookmark properties and contact owners."}
 			>
-				<a href="#properties" class="button-primary">Browse Properties</a>
+				<a href="#properties" class="button-primary w-fit">Browse Properties</a>
 			</InfoCard>
-			<!-- for property owners -->
+			<!-- for owners -->
 			<InfoCard
 				imageLink="/assets/for_owners.svg"
-				title={"For Property Owners"}
+				title={"For Owners"}
 				content={"List your properties and reach potential tenants. Rent as an airbnb or a long term rental."}
 			>
 				{#if loggedIn}
@@ -73,3 +73,18 @@
 </section>
 
 <Properties />
+
+<style>
+	.info-card-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+		column-gap: 1.5rem;
+	}
+	@media (max-width: 680px) {
+		.info-card-grid {
+			grid-template-columns: 1fr;
+			grid-template-rows: auto auto;
+			row-gap: 1.5rem;
+		}
+	}
+</style>

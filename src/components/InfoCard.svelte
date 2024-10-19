@@ -14,3 +14,18 @@
 	</p>
 	<slot></slot>
 </div>
+
+<style>
+	.info-card {
+		display: grid;
+		grid-template-rows: subgrid;
+		grid-row: span 4;
+	}
+	@media (max-width: 680px) {
+		.info-card {
+			display: flex;
+			flex-direction: column;
+			justify-content: stretch;
+		}
+	}
+</style>
