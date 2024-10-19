@@ -43,9 +43,9 @@
 	<!-- name -->
 	<p class="font-medium mt-2">{name}</p>
 	<!-- type -->
-	<p class="mb-2">{type}</p>
+	<p class="mb-1">{type}</p>
 	<!-- location -->
-	<div class="space-x-1">
+	<div class="space-x-1 mb-4">
 		<i class="ri-map-pin-2-fill text-lg text-red-500"></i>
 		<span class="">{city} {state}</span>
 	</div>
