@@ -58,7 +58,7 @@
 				content={"List your properties and reach potential tenants. Rent as an airbnb or a long term rental."}
 			>
 				{#if loggedIn}
-					<a href="/add" class="button-primary">Add Property</a>
+					<a href="/add" class="button-primary w-fit">Add Property</a>
 				{:else}
 					<SignIn>
 						<svelte:fragment slot="submitButton">

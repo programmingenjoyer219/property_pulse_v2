@@ -4,7 +4,9 @@
 	export let imageLink: string;
 </script>
 
-<div class="info-card rounded-2xl p-6 shadow-lg bg-white">
+<div
+	class="info-card rounded-2xl p-6 border-2 border-blue-200 bg-blue-50 hover:bg-blue-100 transition-colors duration-200"
+>
 	<img src={imageLink} alt="" class="h-[200px] min-[460px]:mb-8 mx-auto" />
 	<h2 class="text-2xl font-bold text-gray-700 mb-2 sm:text-3xl">
 		{title}
