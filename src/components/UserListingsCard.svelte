@@ -1,7 +1,7 @@
-<script>
+<script lang="ts">
 	import { invalidate, goto } from "$app/navigation";
 
-	export let property;
+	export let property: Property;
 
 	$: ({
 		id,
@@ -23,20 +23,27 @@
 	let result = { success: true, error: null };
 	let loading = false;
 
+	async function makeDeleteRequestToAPI(
+		property_id: number
+	): Promise<{ success: boolean; error: string | null }> {
+		const response = await fetch("/api/properties", {
+			method: "DELETE",
+			body: JSON.stringify({ property_id }),
+			headers: {
+				"Content-Type": "application/json",
+			},
+		});
+		result = await response.json();
+		return result;
+	}
+
 	async function deleteProperty() {
 		loading = true;
 		if (!confirm(`Are you sure you want to delete the property : ${name}`)) {
 			loading = false;
 			return;
 		}
-		const response = await fetch("/api/properties", {
-			method: "DELETE",
-			body: JSON.stringify({ property_id: id }),
-			headers: {
-				"Content-Type": "application/json",
-			},
-		});
-		result = await response.json();
+		const result = await makeDeleteRequestToAPI(id);
 		if (result.success) invalidate("app:profile");
 		loading = false;
 	}
@@ -83,7 +90,6 @@
 		>
 			{#if loading}
 				<i class="ri-delete-bin-6-fill text-lg animate-pulse text-red-500"></i>
-				<span class="animate-pulse text-red-500">Deleting...</span>
 			{:else}
 				<i class="ri-delete-bin-6-fill text-lg"></i>
 			{/if}
