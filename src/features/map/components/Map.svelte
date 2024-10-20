@@ -1,34 +1,25 @@
 <script lang="ts">
 	import { onMount } from "svelte";
+	import { getCoordinatesFromLocation } from "../utils";
 
 	export let street = "";
 	export let city = "";
 	export let state = "";
 	export let zipcode = "";
+
 	let lat = 0;
 	let lng = 0;
 
 	onMount(async () => {
-		const coordinates = await fetchCoordinates();
+		const coordinates = await getCoordinatesFromLocation(
+			street,
+			city,
+			state,
+			zipcode
+		);
 		lat = coordinates.lat;
 		lng = coordinates.lng;
 	});
-
-	async function fetchCoordinates(): Promise<{
-		lat: number;
-		lng: number;
-		status: number;
-	}> {
-		const response = await fetch("/api/map", {
-			method: "POST",
-			body: JSON.stringify({ street, city, state, zipcode }),
-			headers: {
-				"Content-Type": "application/json",
-			},
-		});
-		const result = await response.json();
-		return result;
-	}
 </script>
 
 <iframe

@@ -1,9 +1,9 @@
 <script lang="ts">
 	import { page } from "$app/stores";
-	import ContactForm from "$components/ContactForm.svelte";
-	import ImageGallery from "$components/ImageGallery.svelte";
-	import ShareButtons from "$components/ShareButtons.svelte";
-	import Map from "$components/Map.svelte";
+	import ContactForm from "$features/messages/forms/ContactForm.svelte";
+	import ImageGallery from "$features/properties/components/ImageGallery.svelte";
+	import ShareButtons from "$features/properties/components/ShareButtons.svelte";
+	import Map from "$features/map/components/Map.svelte";
 	import type { PageData } from "./$types.js";
 	import type { ActionData } from "./$types.js";
 

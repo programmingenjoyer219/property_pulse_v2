@@ -1,8 +1,8 @@
 <script lang="ts">
 	import type { PageData } from "./$types";
 	import Hero from "$components/Hero.svelte";
-	import InfoCard from "$components/InfoCard.svelte";
-	import Properties from "$components/Properties.svelte";
+	import InfoCard from "$features/properties/components/InfoCard.svelte";
+	import Properties from "$features/properties/components/Properties.svelte";
 	import { propertiesStore } from "$lib/stores/properties";
 	import { SignIn } from "@auth/sveltekit/components";
 

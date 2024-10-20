@@ -1,5 +1,5 @@
 <script lang="ts">
-	import UserListingsCard from "$components/UserListingsCard.svelte";
+	import UserListingsCard from "$features/properties/components/UserListingsCard.svelte";
 	import CustomHeader from "$components/CustomHeader.svelte";
 	import type { PageData } from "./$types";
 

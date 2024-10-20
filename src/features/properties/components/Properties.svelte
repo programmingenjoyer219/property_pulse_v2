@@ -1,5 +1,5 @@
 <script lang="ts">
-	import PropertyCard from "$components/PropertyCard.svelte";
+	import PropertyCard from "$features/properties/components/PropertyCard.svelte";
 	import {
 		propertiesToDisplay,
 		showMoreProperties,

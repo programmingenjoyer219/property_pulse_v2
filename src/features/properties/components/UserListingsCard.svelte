@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { invalidate, goto } from "$app/navigation";
+	import { dbDeleteProperty } from "../db/delete";
 
 	export let property: Property;
 
@@ -20,22 +21,11 @@
 		images,
 	} = property);
 
-	let result = { success: true, error: null };
+	let result: { success: boolean; error: null | string } = {
+		success: true,
+		error: null,
+	};
 	let loading = false;
-
-	async function makeDeleteRequestToAPI(
-		property_id: number
-	): Promise<{ success: boolean; error: string | null }> {
-		const response = await fetch("/api/properties", {
-			method: "DELETE",
-			body: JSON.stringify({ property_id }),
-			headers: {
-				"Content-Type": "application/json",
-			},
-		});
-		result = await response.json();
-		return result;
-	}
 
 	async function deleteProperty() {
 		loading = true;
@@ -43,7 +33,7 @@
 			loading = false;
 			return;
 		}
-		const result = await makeDeleteRequestToAPI(id);
+		result = await dbDeleteProperty(id);
 		if (result.success) invalidate("app:profile");
 		loading = false;
 	}
