@@ -30,6 +30,18 @@ declare global {
 		images: string[];
 		featured: boolean;
 	}
-}
 
+	interface Message {
+		id: number;
+		marked_as_read: boolean;
+		content: string;
+		sender_name: string;
+		sender_email: string;
+		sender_phone_number: string;
+		created_at: string;
+		properties: {
+			name: string;
+		};
+	}
+}
 export {};

@@ -40,8 +40,12 @@
 			<p class="text-red-500 font-medium text-xl">{error}</p>
 		{:else if properties?.length === 0}
 			<div class="text-center text-gray-400/75 space-y-4">
-				<i class="ri-home-2-fill text-9xl"></i>
-				<p class="text-3xl font-semibold">No property listings</p>
+				<img
+					src="/assets/no_properties.svg"
+					alt=""
+					class="w-[70vw] max-w-lg mx-auto"
+				/>
+				<p class="text-2xl font-semibold">No properties listed</p>
 			</div>
 		{:else}
 			<div class="user-listings-grid">
