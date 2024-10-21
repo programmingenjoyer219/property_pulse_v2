@@ -40,7 +40,7 @@
 </script>
 
 <div
-	class="listing-card-subgrid p-3 mb-4 rounded-2xl border-2 border-gray-200 bg-gray-100 hover:bg-gray-50 transition-colors duration-200"
+	class="listing-card-subgrid p-3 mb-4 rounded-2xl border-2 border-gray-200 bg-white hover:shadow-lg transition-colors transition-shadow duration-200"
 >
 	<div
 		class="h-[10rem] mb-4 rounded-xl mx-auto w-full"
