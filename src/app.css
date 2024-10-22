@@ -33,7 +33,11 @@ body {
 }
 
 .error {
-	@apply font-medium text-red-500 font-mono;
+	@apply font-medium text-red-500 text-sm;
+}
+
+.success {
+	@apply font-medium text-green-600 text-sm;
 }
 
 .required {

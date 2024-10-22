@@ -1,10 +1,30 @@
-<script>
+<script lang="ts">
 	import { SignIn } from "@auth/sveltekit/components";
 	import { enhance } from "$app/forms";
+
 	export let form;
 	export let session;
 	export let receiver_email;
 	export let property_id;
+
+	$: submissionErrors = {
+		general:
+			form?.formErrors?.dbError ||
+			form?.formErrors?.property_id ||
+			form?.formErrors?.sender_name ||
+			form?.formErrors?.sender_email ||
+			form?.formErrors?.receiver_email
+				? "Oops... something went wrong. Try again later"
+				: "",
+		sender_phone_number: form?.formErrors?.sender_phone_number
+			? form?.formErrors?.sender_phone_number?._errors[0]
+			: "",
+		content: form?.formErrors?.content
+			? form?.formErrors?.content?._errors[0]
+			: "",
+	};
+
+	$: submissionSuccessfull = form?.success;
 </script>
 
 {#if !!session}
@@ -14,11 +34,8 @@
 		class="sm:sticky sm:top-4 flex flex-col gap-4 p-4 rounded-md shadow-md bg-white text-gray-800 h-fit"
 	>
 		<h3 class="text-xl font-medium">Contact Property Owner</h3>
-		{#if !form?.isValidated && form?.failureDueTo["server"]}
-			<span class="error">{form?.failureDueTo["server"]}</span>
-		{/if}
 		<!-- property_id -->
-		<input type="text" name="property_id" value={property_id} hidden />
+		<input type="number" name="property_id" value={property_id} hidden />
 		<!-- sender_name -->
 		<input type="text" name="sender_name" value={session?.user?.name} hidden />
 		<!-- sender_email -->
@@ -30,11 +47,14 @@
 		/>
 		<!-- receiver_email -->
 		<input type="text" name="receiver_email" value={receiver_email} hidden />
+		{#if submissionErrors.general}
+			<p class="error">Oops... something went wrong. Try again later</p>
+		{/if}
 		<!-- contact number -->
 		<div class="flex flex-col gap-2">
 			<label for="sender_phone_number" class="font-medium">Contact no.</label>
-			{#if !form?.isValidated && !form?.failureDueTo["server"] && form?.failureDueTo["sender_phone_number"]}
-				<span class="error">{form?.failureDueTo["sender_phone_number"]}</span>
+			{#if submissionErrors.sender_phone_number}
+				<p class="error">{submissionErrors.sender_phone_number}</p>
 			{/if}
 			<input
 				type="text"
@@ -47,8 +67,8 @@
 		<!-- message -->
 		<div class="flex flex-col gap-2">
 			<label for="content" class="font-medium">Message</label>
-			{#if !form?.isValidated && !form?.failureDueTo["server"] && form?.failureDueTo["content"]}
-				<span class="error">{form?.failureDueTo["content"]}</span>
+			{#if submissionErrors.content}
+				<p class="error">{submissionErrors.content}</p>
 			{/if}
 			<textarea
 				rows="4"
@@ -59,17 +79,13 @@
 			/>
 		</div>
 		<!-- submit button -->
+		{#if submissionSuccessfull}
+			<p class="success">{submissionSuccessfull}</p>
+		{/if}
 		<button type="submit" class="button-primary space-x-2">
 			<i class="ri-send-plane-fill"></i>
 			<span class="">Send Message</span>
 		</button>
-
-		{#if form?.isValidated}
-			<p class="text-green-600 font-medium font-mono">
-				<i class="ri-checkbox-circle-fill"></i>
-				<span>Message sent successfully</span>
-			</p>
-		{/if}
 	</form>
 {:else}
 	<div
