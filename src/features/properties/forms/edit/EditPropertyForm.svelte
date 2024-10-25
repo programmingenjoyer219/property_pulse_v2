@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { enhance } from "$app/forms";
+	import toast from "svelte-french-toast";
 
 	export let property: Property;
 	export let formErrors: any;
@@ -40,6 +41,7 @@
 		loading = true;
 		return async ({ update }) => {
 			await update();
+			toast.success("Property info updated successfully");
 		};
 	}}
 	class="space-y-6 max-[425px]:text-sm"

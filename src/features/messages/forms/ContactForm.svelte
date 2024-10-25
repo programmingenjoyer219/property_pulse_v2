@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { SignIn } from "@auth/sveltekit/components";
 	import { enhance } from "$app/forms";
+	import toast from "svelte-french-toast";
 
 	export let form;
 	export let session;
@@ -24,7 +25,9 @@
 			: "",
 	};
 
-	$: submissionSuccessfull = form?.success;
+	$: {
+		if (form?.success) toast.success("Message sent successfully");
+	}
 </script>
 
 {#if !!session}
@@ -79,9 +82,6 @@
 			/>
 		</div>
 		<!-- submit button -->
-		{#if submissionSuccessfull}
-			<p class="success">{submissionSuccessfull}</p>
-		{/if}
 		<button type="submit" class="button-primary space-x-2">
 			<i class="ri-send-plane-fill"></i>
 			<span class="">Send Message</span>

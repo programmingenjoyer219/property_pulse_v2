@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { invalidate } from "$app/navigation";
 	import { dbDeleteMessage } from "../db/delete";
+	import toast from "svelte-french-toast";
 
 	export let messageId: number;
 
@@ -9,7 +10,12 @@
 	async function handleClick() {
 		console.log("clicked");
 		loading = true;
-		await dbDeleteMessage(messageId);
+		try {
+			await dbDeleteMessage(messageId);
+			toast.success("Message deleted successfully");
+		} catch (error) {
+			toast.error("Failed to delete message");
+		}
 		invalidate("app:messages");
 		loading = false;
 	}

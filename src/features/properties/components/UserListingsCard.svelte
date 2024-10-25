@@ -2,6 +2,7 @@
 	import { PUBLIC_CLOUDINARY_CLOUD_NAME } from "$env/static/public";
 	import { invalidate, goto } from "$app/navigation";
 	import { dbDeleteProperty } from "../db/delete";
+	import toast from "svelte-french-toast";
 
 	export let property: Property;
 
@@ -35,7 +36,12 @@
 			return;
 		}
 		result = await dbDeleteProperty(id);
-		if (result.success) invalidate("app:profile");
+		if (result.success) {
+			invalidate("app:profile");
+			toast.success("Property deleted successfully");
+		} else {
+			toast.error("Failed to delete property");
+		}
 		loading = false;
 	}
 </script>

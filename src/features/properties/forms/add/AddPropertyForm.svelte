@@ -7,6 +7,7 @@
 		PUBLIC_CLOUDINARY_API_KEY,
 	} from "$env/static/public";
 	import { dbAddProperty } from "$features/properties/db/create";
+	import toast from "svelte-french-toast";
 
 	let loading = false;
 
@@ -96,9 +97,14 @@
 		const validationResult = validateAddPropertyFormData(propertyData);
 		formErrors = validationResult?.formErrors;
 		if (validationResult?.isValidated) {
-			const { id } = await dbAddProperty(propertyData);
-			form.reset();
-			goto(`/properties/${id}`);
+			try {
+				const { id } = await dbAddProperty(propertyData);
+				toast.success("New listing added successfully");
+				form.reset();
+				goto(`/properties/${id}`);
+			} catch (error) {
+				toast.error("Failed to list property");
+			}
 		}
 		loading = false;
 	}

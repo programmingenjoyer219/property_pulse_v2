@@ -9,6 +9,7 @@
 		PUBLIC_CLOUDINARY_CLOUD_NAME,
 		PUBLIC_CLOUDINARY_API_KEY,
 	} from "$env/static/public";
+	import { Toaster } from "svelte-french-toast";
 
 	configureCloudinary({
 		cloudName: PUBLIC_CLOUDINARY_CLOUD_NAME,
@@ -31,6 +32,7 @@
 </svelte:head>
 
 <main class="min-h-dvh">
+	<Toaster />
 	<Navbar session={data.session} />
 	<slot />
 	<Footer />

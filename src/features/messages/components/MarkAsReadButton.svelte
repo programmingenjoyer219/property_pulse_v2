@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { invalidate } from "$app/navigation";
 	import { dbMarkMessageAsRead } from "../db/update";
+	import toast from "svelte-french-toast";
 
 	export let messageId: number;
 	export let markedAsRead: boolean = false;
@@ -10,7 +11,12 @@
 	async function handleClick() {
 		console.log("clicked");
 		loading = true;
-		await dbMarkMessageAsRead(messageId);
+		try {
+			await dbMarkMessageAsRead(messageId);
+			toast.success("Message status updated");
+		} catch (error) {
+			toast.error("Failed to update message status");
+		}
 		invalidate("app:messages");
 		loading = false;
 	}

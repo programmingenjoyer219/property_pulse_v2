@@ -31,6 +31,7 @@
 		"cloudinary": "^2.5.1",
 		"opencage-api-client": "^1.0.7",
 		"remixicon": "^4.3.0",
+		"svelte-french-toast": "^1.2.0",
 		"zod": "^3.23.8"
 	}
 }
