@@ -44,3 +44,20 @@ export async function dbGetPropertiesByEmail(
 	}
 	return properties as Property[];
 }
+
+export async function dbSearchProperties(
+	searchQuery: string,
+	propertyType: string
+): Promise<Property[]> {
+	let query = `name.ilike.%${searchQuery}%,street.ilike.%${searchQuery}%,city.ilike.%${searchQuery}%,state.ilike.%${searchQuery}%,zipcode.ilike.%${searchQuery}%`;
+	const { data: properties, error } = await supabase
+		.from("properties")
+		.select("*")
+		.eq("type", propertyType)
+		.or(query);
+	if (error) {
+		console.error("failed to get search results");
+		throw new Error("" + error);
+	}
+	return properties;
+}

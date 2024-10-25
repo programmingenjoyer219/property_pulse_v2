@@ -1,4 +1,9 @@
 <script>
+	import { goto } from "$app/navigation";
+
+	let searchQuery = "";
+	let type = "Apartment";
+
 	const propertyTypes = [
 		"Apartment",
 		"Condo",
@@ -9,7 +14,9 @@
 		"Other",
 	];
 
-	function handleSubmit() {}
+	function handleSubmit() {
+		goto(`/properties/search?query=${searchQuery}&type=${type}`);
+	}
 </script>
 
 <form
@@ -21,10 +28,12 @@
 		type="text"
 		name="searchQuery"
 		placeholder="Enter location (City, State, Zip, etc...)"
+		bind:value={searchQuery}
 	/>
 
 	<select
 		name="type"
+		bind:value={type}
 		class="p-2 rounded-md outline-none focus:ring-2 focus:ring-blue-300 flex-1"
 	>
 		{#each propertyTypes as propertyType}
