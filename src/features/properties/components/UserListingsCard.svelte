@@ -66,7 +66,7 @@
 
 		<button
 			title="edit property"
-			on:click={() => goto(`/edit/${id}`)}
+			on:click={() => goto(`/properties/edit/${id}`)}
 			disabled={loading}
 			class="button-secondary hover:bg-blue-100 hover:border-blue-500 hover:text-blue-500 text-gray-500/75"
 		>
