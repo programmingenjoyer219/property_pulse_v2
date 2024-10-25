@@ -1,5 +1,5 @@
 <script>
-	import SearchPropertyForm from "$features/properties/forms/SearchPropertyForm.svelte";
+	import SearchPropertyForm from "$features/properties/forms/search/SearchPropertyForm.svelte";
 </script>
 
 <section class="px-4 pt-4 pb-12 bg-blue-700">
