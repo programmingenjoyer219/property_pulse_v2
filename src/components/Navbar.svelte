@@ -58,8 +58,8 @@
 						<!-- add property -->
 						<li>
 							<a
-								href="/add"
-								class="{$page.route.id?.includes('/add') &&
+								href="/properties/add"
+								class="{$page.route.id?.includes('/properties/add') &&
 									'bg-blue-800'} nav-link"
 							>
 								<i class="ri-add-fill text-xl"></i>

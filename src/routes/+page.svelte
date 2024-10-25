@@ -10,20 +10,7 @@
 
 	$: loggedIn = !!data.session;
 
-	$propertiesStore = [
-		...data.properties,
-		...data.properties,
-		...data.properties,
-		...data.properties,
-		...data.properties,
-		...data.properties,
-		...data.properties,
-		...data.properties,
-		...data.properties,
-		...data.properties,
-		...data.properties,
-		...data.properties,
-	];
+	$propertiesStore = [...data.properties];
 </script>
 
 <svelte:head>
@@ -58,7 +45,9 @@
 				content={"List your properties and reach potential tenants. Rent as an airbnb or a long term rental."}
 			>
 				{#if loggedIn}
-					<a href="/add" class="button-primary w-fit">Add Property</a>
+					<a href="/properties/add" class="button-primary w-fit">
+						Add Property
+					</a>
 				{:else}
 					<SignIn>
 						<svelte:fragment slot="submitButton">
