@@ -6,19 +6,21 @@ PropertyPulse is a full-stack property listing website built with cutting-edge t
 
 **Tech Stack**
 
-- **Frontend:** SvelteKit - A lightning-fast framework for building performant and interactive web applications.
-- **Backend:** Supabase - A powerful backend-as-a-service (BaaS) platform for managing user authentication, databases, and storage.
-- **Styling:** TailwindCSS - A utility-first CSS framework that offers rapid and responsive UI development.
-- **Components:** Bits-UI - A collection of reusable UI components for a consistent and modern look and feel.
-- **Authentication:** Auth.js - A potential library or custom implementation for user login, registration, and authorization (replace with the specific library you used).
+- **SvelteKit** - A lightning-fast framework for building performant and interactive web applications.
+- **Supabase** - A powerful backend-as-a-service (BaaS) platform for managing user authentication, databases, and storage.
+- **TailwindCSS** - A utility-first CSS framework that offers rapid and responsive UI development.
+- **Daisy-UI** - A collection of reusable UI components for a consistent and modern look and feel.
+- **Cloudinary** - A cloud-based platform for image and vido management.
+- **Auth.js** - A potential library or custom implementation for user login, registration, and authorization (replace with the specific library you used).
+- **Svelte-French-Toast** - A simple-to-use toast notification system for Svelte.
 
 **Features**
 
 - **Listings Management:** Property owners can easily create, edit, and manage their property listings on the platform.
-- **Advanced Search:** Users can filter properties based on location and property type.
-- **Rich Listings Display:** Showcase properties with appealing visuals, detailed descriptions, and key features.
+- **Search:** Users can filter properties based on location and property type.
+- **Listings Display:** Showcase properties with appealing visuals, detailed descriptions, and key features.
 - **User Accounts:** Users can create accounts to contact property owners, or potentially submit rental applications.
-- **Secure Communication:** Implement user authentication (Auth.js) to enable secure communication between property owners and seekers.
+- **Communication:** Implement user authentication (Auth.js) to enable secure communication between property owners and seekers.
 
 **Inspiration and Learning Journey**
 
