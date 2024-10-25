@@ -29,7 +29,7 @@
 				alt=""
 				class="w-[70vw] max-w-xl mx-auto"
 			/>
-			<p class="text-2xl font-semibold">No messages</p>
+			<p class="text-lg sm:text-2xl font-semibold">No messages</p>
 		</div>
 	{:else}
 		<div

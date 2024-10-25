@@ -13,7 +13,7 @@
 			alt=""
 			class="w-[400px]"
 		/>
-		<p class="font-medium text-2xl text-gray-700">
+		<p class="font-medium text-lg sm:text-2xl text-gray-700">
 			{error?.message ?? "Oops... something went wrong."}
 		</p>
 		<a class="button-primary" href="/">Go back to home page</a>

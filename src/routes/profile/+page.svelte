@@ -45,7 +45,7 @@
 					alt=""
 					class="w-[70vw] max-w-lg mx-auto"
 				/>
-				<p class="text-2xl font-semibold">No properties listed</p>
+				<p class="text-lg sm:text-2xl font-semibold">No properties listed</p>
 			</div>
 		{:else}
 			<div class="user-listings-grid">
