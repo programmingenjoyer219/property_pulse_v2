@@ -24,9 +24,9 @@ declare global {
 		baths: number;
 		square_feet: number;
 		amenities: string[];
-		nightly_rate: number;
-		weekly_rate: number;
-		monthly_rate: number;
+		nightly_rate: number | null;
+		weekly_rate: number | null;
+		monthly_rate: number | null;
 		images: string[];
 		featured: boolean;
 	}
