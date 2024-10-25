@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { PUBLIC_CLOUDINARY_CLOUD_NAME } from "$env/static/public";
 	import { invalidate, goto } from "$app/navigation";
 	import { dbDeleteProperty } from "../db/delete";
 
@@ -44,7 +45,7 @@
 >
 	<div
 		class="h-[10rem] mb-4 rounded-xl mx-auto w-full"
-		style="background: url({images[0]}) center center / cover no-repeat;"
+		style="background: url(https://res.cloudinary.com/{PUBLIC_CLOUDINARY_CLOUD_NAME}/image/upload/c_fill,w_1280,h_800,g_center/c_limit,w_1280/f_webp,fl_awebp/q_auto/v1729834637/{images[0]}) center center / cover no-repeat;"
 	></div>
 	<p class="text-xl font-medium mb-2">{name}</p>
 	<p class="mb-4">{street}, {city}, {state} - {zipcode}</p>

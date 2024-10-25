@@ -1,4 +1,6 @@
 <script lang="ts">
+	import { PUBLIC_CLOUDINARY_CLOUD_NAME } from "$env/static/public";
+
 	export let property: Property;
 	$: ({
 		id,
@@ -32,7 +34,7 @@
 	<!-- image -->
 	<div
 		class="relative h-[240px] rounded-2xl"
-		style="background: url({images[0]}) center center / cover no-repeat;"
+		style="background: url(https://res.cloudinary.com/{PUBLIC_CLOUDINARY_CLOUD_NAME}/image/upload/c_fill,w_1280,h_800,g_center/c_limit,w_1280/f_webp,fl_awebp/q_auto/v1729834637/{images[0]}) center center / cover no-repeat;"
 	>
 		<!-- rate -->
 		<span
