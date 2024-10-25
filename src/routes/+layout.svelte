@@ -4,6 +4,16 @@
 	import Navbar from "$components/Navbar.svelte";
 	import Footer from "$components/Footer.svelte";
 	import type { LayoutData } from "./$types";
+	import { configureCloudinary } from "svelte-cloudinary";
+	import {
+		PUBLIC_CLOUDINARY_CLOUD_NAME,
+		PUBLIC_CLOUDINARY_API_KEY,
+	} from "$env/static/public";
+
+	configureCloudinary({
+		cloudName: PUBLIC_CLOUDINARY_CLOUD_NAME,
+		apiKey: PUBLIC_CLOUDINARY_API_KEY,
+	});
 
 	export let data: LayoutData;
 </script>
