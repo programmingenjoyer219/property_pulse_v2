@@ -7,46 +7,9 @@
 	export let message: Message;
 </script>
 
-<!-- for screen width > 1000px -->
-<div
-	class="message-grid text-sm p-1 border rounded-sm transition-shadow duration-200 hover:shadow-md {message.marked_as_read &&
-		'bg-blue-50'}"
->
-	<!-- property name -->
-	<div>
-		<span class="font-semibold">{message.properties.name}</span>
-	</div>
-	<!-- sender details -->
-	<ContactInfo
-		screenSize={"big"}
-		title={formatName(message.sender_name)}
-		senderName={formatName(message.sender_name)}
-		senderEmail={message.sender_email}
-		senderPhoneNumber={message.sender_phone_number}
-	/>
-	<!-- message -->
-	<div>
-		<p>{message.content}</p>
-	</div>
-	<!-- actions -->
-	<div>
-		<div class="grid-cols-2 gap-1">
-			<MarkAsReadButton
-				markedAsRead={message.marked_as_read}
-				messageId={message.id}
-			/>
-			<DeleteMessageButton messageId={message.id} />
-		</div>
-	</div>
-	<!-- date -->
-	<div>
-		<span>{formatDate(message.created_at)}</span>
-	</div>
-</div>
-
 <!-- for screen width < 1000px -->
 <div
-	class="min-[1000px]:hidden p-2 border rounded-sm transition-shadow duration-200 hover:shadow-md {message.marked_as_read &&
+	class="p-2 border rounded-sm transition-shadow duration-200 hover:shadow-md {message.marked_as_read &&
 		'bg-blue-50'}"
 >
 	<!-- property name -->
